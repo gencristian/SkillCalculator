@@ -1,0 +1,15 @@
+C:\Users\Cristian\source\repos\SkillCalculator_LunaPlus\SkillCalculator_LunaPlus\obj\Debug\SkillCalculator_LunaPlus.csprojAssemblyReference.cache
+C:\Users\Cristian\source\repos\SkillCalculator_LunaPlus\SkillCalculator_LunaPlus\obj\Debug\App.g.cs
+C:\Users\Cristian\source\repos\SkillCalculator_LunaPlus\SkillCalculator_LunaPlus\obj\Debug\SkillCalculator_LunaPlus_MarkupCompile.cache
+C:\Users\Cristian\source\repos\SkillCalculator_LunaPlus\SkillCalculator_LunaPlus\bin\Debug\SkillCalculator_LunaPlus.exe.config
+C:\Users\Cristian\source\repos\SkillCalculator_LunaPlus\SkillCalculator_LunaPlus\bin\Debug\SkillCalculator_LunaPlus.exe
+C:\Users\Cristian\source\repos\SkillCalculator_LunaPlus\SkillCalculator_LunaPlus\bin\Debug\SkillCalculator_LunaPlus.pdb
+C:\Users\Cristian\source\repos\SkillCalculator_LunaPlus\SkillCalculator_LunaPlus\obj\Debug\MainWindow.g.cs
+C:\Users\Cristian\source\repos\SkillCalculator_LunaPlus\SkillCalculator_LunaPlus\obj\Debug\SkillCalculator_LunaPlus_MarkupCompile.lref
+C:\Users\Cristian\source\repos\SkillCalculator_LunaPlus\SkillCalculator_LunaPlus\obj\Debug\MainWindow.baml
+C:\Users\Cristian\source\repos\SkillCalculator_LunaPlus\SkillCalculator_LunaPlus\obj\Debug\SkillCalculator_LunaPlus.g.resources
+C:\Users\Cristian\source\repos\SkillCalculator_LunaPlus\SkillCalculator_LunaPlus\obj\Debug\SkillCalculator_LunaPlus.Properties.Resources.resources
+C:\Users\Cristian\source\repos\SkillCalculator_LunaPlus\SkillCalculator_LunaPlus\obj\Debug\SkillCalculator_LunaPlus.csproj.GenerateResource.cache
+C:\Users\Cristian\source\repos\SkillCalculator_LunaPlus\SkillCalculator_LunaPlus\obj\Debug\SkillCalculator_LunaPlus.csproj.CoreCompileInputs.cache
+C:\Users\Cristian\source\repos\SkillCalculator_LunaPlus\SkillCalculator_LunaPlus\obj\Debug\SkillCalculator_LunaPlus.exe
+C:\Users\Cristian\source\repos\SkillCalculator_LunaPlus\SkillCalculator_LunaPlus\obj\Debug\SkillCalculator_LunaPlus.pdb
