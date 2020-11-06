@@ -5,12 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SkillCalculator_LunaPlus"
         mc:Ignorable="d"
-        Title="SkillCalculator - Luna Plus Latino" Height="768" Width="1024">
+        Title="SkillCalculator - Luna Plus Latino" Height="768" Width="1065">
+
+    <Window.Resources>
+        <Style x:Key="CenterGridHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="70"></RowDefinition>
-            <RowDefinition Height="250"></RowDefinition>
+            <RowDefinition Height="120"></RowDefinition>
+            <RowDefinition Height="400"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
@@ -18,29 +25,98 @@
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="62"></ColumnDefinition>
-                <ColumnDefinition Width="45"></ColumnDefinition>
-                <ColumnDefinition Width="62"></ColumnDefinition>
-                <ColumnDefinition Width="110"></ColumnDefinition>
+                <ColumnDefinition Width="55"></ColumnDefinition>
+                <ColumnDefinition Width="63"></ColumnDefinition>
+                <ColumnDefinition Width="99"></ColumnDefinition>
                 <ColumnDefinition Width="63"></ColumnDefinition>
                 <ColumnDefinition Width="140"></ColumnDefinition>
                 <ColumnDefinition Width="140"></ColumnDefinition>
                 <ColumnDefinition Width="140"></ColumnDefinition>
                 <ColumnDefinition Width="140"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="140"></ColumnDefinition>
             </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
 
             <TextBlock VerticalAlignment="Center" Margin="10,24" FontSize="17" Grid.Column="0" Height="22">Nivel:</TextBlock>
-            <ComboBox Grid.Column="1" Margin="0,18,0,18" Name="lvlPJ"></ComboBox>
+            <ComboBox FontSize="15" Grid.Column="1" Margin="0,18,0,18" Name="lvlPJ"></ComboBox>
             <TextBlock VerticalAlignment="Center" FontSize="17" Grid.Column="2" Margin="14,24,10,24" Height="22">Raza:</TextBlock>
-            <ComboBox Grid.Column="3" Margin="0,18,0,18" Name="raza"></ComboBox>
+            <ComboBox Grid.Column="3" Margin="0,18,0,18" Name="raza"  SelectionChanged="raza_SelectionChanged">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding nombreRaza}" FontSize="15"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
             <TextBlock VerticalAlignment="Center" FontSize="17" Grid.Column="4" Margin="14,24,10,24" Height="22">Path:</TextBlock>
-            <ComboBox Grid.Column="5" Margin="0,18,5,18" Name="job1"></ComboBox>
-            <ComboBox Grid.Column="6" Margin="5,18,5,18" Name="job20"></ComboBox>
-            <ComboBox Grid.Column="7" Margin="5,18,5,18" Name="job40"></ComboBox>
-            <ComboBox Grid.Column="8" Margin="5,18,5,18" Name="job75"></ComboBox>
-            <ComboBox Grid.Column="8" Margin="5,18,5,18" Name="job105"></ComboBox>
-            <Button Grid.Column="9" Margin="20,18,20,18" FontSize="17">Reset</Button>
+            <ComboBox Grid.Column="5" Margin="0,18,5,18" Name="job1" SelectionChanged="job1_SelectionChanged">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding nombreJob1}" FontSize="15"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <ComboBox Grid.Column="6" Margin="5,18,5,18" Name="job20" SelectionChanged="job20_SelectionChanged">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding nombreJob20}" FontSize="15"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <ComboBox Grid.Column="7" Margin="5,18,5,18" Name="job40" SelectionChanged="job40_SelectionChanged">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding nombreJob40}" FontSize="15"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <ComboBox Grid.Column="8" Margin="5,18,5,18" Name="job75" SelectionChanged="job75_SelectionChanged">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding nombreJob75}" FontSize="15"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <ComboBox Grid.Column="9" Margin="5,18,5,18" Name="job105">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding nombreJob105}" FontSize="15"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Button Grid.Column="9" Margin="24,7,16,9" FontSize="17" Grid.Row="1">Reset</Button>
+
+            <TextBlock  FontSize="17" Grid.Row="1" Grid.Column="0" Margin="26,13,10,14">SP:</TextBlock>
+            <TextBlock  FontSize="17" Grid.Row="1" Grid.ColumnSpan="3" Margin="10,13,47,14" Grid.Column="1" Name="spDisponible" >0 / 0</TextBlock>
+
         </Grid>
+
+        <DataGrid Grid.Row="2">
+            <DataGrid.Columns >
+                <DataGridTextColumn HeaderStyle="{StaticResource CenterGridHeaderStyle}" Header="Lv" Width="50" ></DataGridTextColumn>
+                <DataGridTextColumn HeaderStyle="{StaticResource CenterGridHeaderStyle}" Header="Skill Name" Width="170"></DataGridTextColumn>
+                <DataGridTextColumn HeaderStyle="{StaticResource CenterGridHeaderStyle}" Header="Damage" Width="75"></DataGridTextColumn>
+                <DataGridTextColumn HeaderStyle="{StaticResource CenterGridHeaderStyle}" Header="CD" Width="75"></DataGridTextColumn>
+                <DataGridTextColumn HeaderStyle="{StaticResource CenterGridHeaderStyle}" Header="Cast" Width="75"></DataGridTextColumn>
+                <DataGridTextColumn HeaderStyle="{StaticResource CenterGridHeaderStyle}" Header="Lv Req" Width="50"></DataGridTextColumn>
+                <DataGridTextColumn HeaderStyle="{StaticResource CenterGridHeaderStyle}" Header="SP Req" Width="50"></DataGridTextColumn>
+                <DataGridTextColumn HeaderStyle="{StaticResource CenterGridHeaderStyle}" Header="Stat Effect" Width="*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
 
     </Grid>
 </Window>
