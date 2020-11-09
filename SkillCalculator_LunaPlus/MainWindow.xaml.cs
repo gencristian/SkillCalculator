@@ -25,16 +25,26 @@ namespace SkillCalculator_LunaPlus
             InitializeComponent();
 
             //Cargar Niveles            
-            for (int i=1;i<=150;i++)
-            {
-                lvlPJ.Items.Add(i.ToString());    
-            }
+            cargarNiveles();
             //Cargar Razas
+            cargarRazas();
+                             
+        }
+
+        public void cargarNiveles()
+        {
+            for (int i = 1; i <= 150; i++)
+            {
+                lvlPJ.Items.Add(i.ToString());
+            }
+        }
+        public void cargarRazas()
+        {
             List<Raza> razas = new List<Raza>();
             razas.Add(new Raza("Humano"));
             razas.Add(new Raza("Elfo"));
-            razas.Add(new Raza("Demon"));           
-            raza.ItemsSource = razas;                 
+            razas.Add(new Raza("Demon"));
+            raza.ItemsSource = razas;
         }
 
         public class Raza
@@ -99,25 +109,27 @@ namespace SkillCalculator_LunaPlus
 
         private void raza_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            List<Job1> jobs1 = new List<Job1>();
-            Raza selectRaza = (raza.SelectedItem as Raza);
-             
-            if (selectRaza.nombreRaza != "Demon")
+            if (raza.SelectedItem != null)
             {
-                jobs1.Add(new Job1("Mago"));
-                jobs1.Add(new Job1("Guerrero"));
-                jobs1.Add(new Job1("Picaro"));
-            }
-            else
-            {
-                jobs1.Add(new Job1("Majin"));                
-            }          
-            job1.ItemsSource = jobs1;
-            job20.ItemsSource = null;
-            job40.ItemsSource = null;
-            job75.ItemsSource = null;
-            job105.ItemsSource = null;
+                List<Job1> jobs1 = new List<Job1>();
+                Raza selectRaza = (raza.SelectedItem as Raza);
 
+                if (selectRaza.nombreRaza != "Demon")
+                {
+                    jobs1.Add(new Job1("Mago"));
+                    jobs1.Add(new Job1("Guerrero"));
+                    jobs1.Add(new Job1("Picaro"));
+                }
+                else
+                {
+                    jobs1.Add(new Job1("Majin"));
+                }
+                job1.ItemsSource = jobs1;
+                job20.ItemsSource = null;
+                job40.ItemsSource = null;
+                job75.ItemsSource = null;
+                job105.ItemsSource = null;
+            }
         }
         
         private void job1_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -272,7 +284,7 @@ namespace SkillCalculator_LunaPlus
                 }
                 else
                 {
-                    jobs75.Add(new Job75("Expert"));
+                    jobs75.Add(new Job75("Master"));
                 }
                 job75.ItemsSource = jobs75;
             }
@@ -344,7 +356,7 @@ namespace SkillCalculator_LunaPlus
                 }
                 else
                 {
-                    jobs105.Add(new Job105("Expert"));
+                    jobs105.Add(new Job105("Abyss"));
                 }
                 job105.ItemsSource = jobs105;
             }
@@ -357,21 +369,27 @@ namespace SkillCalculator_LunaPlus
             job40.ItemsSource = null;
             job20.ItemsSource = null;
             job1.ItemsSource = null;
+            lvlPJ.SelectedIndex = -1;
+            raza.SelectedIndex = -1;
+            spDisponible.Text = "0";
+            spRestante.Text = "0";
         }
 
         private void lvlPJ_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string lvl = lvlPJ.SelectedItem.ToString();
-            int nivelPJ = int.Parse(lvl);
-            int totalSP = 0;
+            if (lvlPJ.SelectedItem != null) { 
+                string lvl = lvlPJ.SelectedItem.ToString();
+                int nivelPJ = int.Parse(lvl);
+                int totalSP = 0;
 
-            for(int i=2; i<=nivelPJ; i++)
-            {
-                totalSP = totalSP + 20 + CalcularExtraSP(i);
+                for (int i = 2; i <= nivelPJ; i++)
+                {
+                    totalSP = totalSP + 20 + CalcularExtraSP(i);
+                }
+
+                spDisponible.Text = totalSP.ToString();
+                spRestante.Text = totalSP.ToString();
             }
-
-            spDisponible.Text = totalSP.ToString();
-            spRestante.Text = totalSP.ToString();
         }
 
         public int CalcularExtraSP(int nivelPJ)
