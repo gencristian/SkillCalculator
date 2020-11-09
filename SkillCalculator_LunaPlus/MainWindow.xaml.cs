@@ -349,5 +349,44 @@ namespace SkillCalculator_LunaPlus
                 job105.ItemsSource = jobs105;
             }
         }
+
+        private void Reset_Click(object sender, RoutedEventArgs e)
+        {
+            job105.ItemsSource = null;
+            job75.ItemsSource = null;
+            job40.ItemsSource = null;
+            job20.ItemsSource = null;
+            job1.ItemsSource = null;
+        }
+
+        private void lvlPJ_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string lvl = lvlPJ.SelectedItem.ToString();
+            int nivelPJ = int.Parse(lvl);
+            int totalSP = 0;
+
+            for(int i=2; i<=nivelPJ; i++)
+            {
+                totalSP = totalSP + 20 + CalcularExtraSP(i);
+            }
+
+            spDisponible.Text = totalSP.ToString();
+            spRestante.Text = totalSP.ToString();
+        }
+
+        public int CalcularExtraSP(int nivelPJ)
+        {
+            int extraSP = 0;
+
+            if (nivelPJ > 10)
+            {
+                extraSP = (nivelPJ / 10);
+                if ((nivelPJ % 10) == 0)
+                {
+                    extraSP = extraSP - 1;
+                }
+            }
+            return extraSP;
+        }
     }
 }

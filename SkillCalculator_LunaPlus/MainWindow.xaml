@@ -41,7 +41,7 @@
             </Grid.RowDefinitions>
 
             <TextBlock VerticalAlignment="Center" Margin="10,24" FontSize="17" Grid.Column="0" Height="22">Nivel:</TextBlock>
-            <ComboBox FontSize="15" Grid.Column="1" Margin="0,18,0,18" Name="lvlPJ"></ComboBox>
+            <ComboBox FontSize="15" Grid.Column="1" Margin="0,18,0,18" Name="lvlPJ" SelectionChanged="lvlPJ_SelectionChanged"></ComboBox>
             <TextBlock VerticalAlignment="Center" FontSize="17" Grid.Column="2" Margin="14,24,10,24" Height="22">Raza:</TextBlock>
             <ComboBox Grid.Column="3" Margin="0,18,0,18" Name="raza"  SelectionChanged="raza_SelectionChanged">
                 <ComboBox.ItemTemplate>
@@ -98,10 +98,20 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <Button Grid.Column="9" Margin="24,7,16,9" FontSize="17" Grid.Row="1">Reset</Button>
+            <Button Name="Reset" Grid.Column="9" Margin="24,7,16,9" FontSize="17" Grid.Row="1" Click="Reset_Click">Reset</Button>
 
             <TextBlock  FontSize="17" Grid.Row="1" Grid.Column="0" Margin="26,13,10,14">SP:</TextBlock>
-            <TextBlock  FontSize="17" Grid.Row="1" Grid.ColumnSpan="3" Margin="10,13,47,14" Grid.Column="1" Name="spDisponible" >0 / 0</TextBlock>
+            <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="73*"></ColumnDefinition>
+                    <ColumnDefinition Width="13*"></ColumnDefinition>
+                    <ColumnDefinition Width="134*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock  FontSize="17"  Margin="10,13,10,14" Grid.Column="0" HorizontalAlignment="Right" Name="spRestante" RenderTransformOrigin="2.281,0.543" >0</TextBlock>
+                <TextBlock  FontSize="17"  Margin="0,13,0,14" Grid.Column="1" HorizontalAlignment="Center"  >/</TextBlock>
+                <TextBlock  FontSize="17"  Margin="10,13,47,14" Grid.Column="2" Name="spDisponible" >0</TextBlock>
+            </Grid>
 
         </Grid>
 
