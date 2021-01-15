@@ -28,8 +28,46 @@ namespace SkillCalculator_LunaPlus
             cargarNiveles();
             //Cargar Razas
             cargarRazas();
-                             
+                                             
         }
+
+        public void actualizarSkills(/*List<String> path*/)
+        {
+            skillsGrid.Children.Clear();
+            /*
+            TextBlock txt = new TextBlock();
+            txt.Text = "Que onda";
+            Grid.SetColumn(txt, 0);
+            Grid.SetRow(txt, 0);
+            TextBlock txt2 = new TextBlock();
+            txt2.Text = "Sale S";
+            Grid.SetColumn(txt2, 1);
+            Grid.SetRow(txt2, 0);
+            skillsGrid.Children.Add(txt);
+            skillsGrid.Children.Add(txt2);
+            */
+            int cantidadSkills =20;
+            int fila = 0;
+            int columna = 0;
+
+            for(int i =0; i < cantidadSkills; i++)
+            {
+                TextBlock txt = new TextBlock();
+                txt.Text = i.ToString();
+                Grid.SetColumn(txt, columna);
+                Grid.SetRow(txt, fila);
+                skillsGrid.Children.Add(txt);
+                columna++;
+                if (columna > 5)
+                {                   
+                    fila++;
+                    columna = 0;
+                }
+            }
+
+        }
+
+
 
         public void cargarNiveles()
         {
@@ -163,6 +201,7 @@ namespace SkillCalculator_LunaPlus
                 }
                 job20.ItemsSource = jobs20;
             }
+            actualizarSkills();
         }
         
         private void job20_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -373,6 +412,7 @@ namespace SkillCalculator_LunaPlus
             raza.SelectedIndex = -1;
             spDisponible.Text = "0";
             spRestante.Text = "0";
+            skillsGrid.Children.Clear();
         }
 
         private void lvlPJ_SelectionChanged(object sender, SelectionChangedEventArgs e)
