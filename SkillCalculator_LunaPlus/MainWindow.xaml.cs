@@ -34,32 +34,22 @@ namespace SkillCalculator_LunaPlus
         public void actualizarSkills(/*List<String> path*/)
         {
             skillsGrid.Children.Clear();
-            /*
-            TextBlock txt = new TextBlock();
-            txt.Text = "Que onda";
-            Grid.SetColumn(txt, 0);
-            Grid.SetRow(txt, 0);
-            TextBlock txt2 = new TextBlock();
-            txt2.Text = "Sale S";
-            Grid.SetColumn(txt2, 1);
-            Grid.SetRow(txt2, 0);
-            skillsGrid.Children.Add(txt);
-            skillsGrid.Children.Add(txt2);
-            */
+           
             int cantidadSkills =20;
             int fila = 0;
             int columna = 0;
 
             for(int i =0; i < cantidadSkills; i++)
-            {
-                TextBlock txt = new TextBlock();
-                txt.Text = i.ToString();
-                Grid.SetColumn(txt, columna);
-                Grid.SetRow(txt, fila);
-                skillsGrid.Children.Add(txt);
+            {               
+                DockPanel dp = CargarSlotSkill("Skill"+i.ToString());
+                
+                Grid.SetColumn(dp, columna);
+                Grid.SetRow(dp, fila);
+                skillsGrid.Children.Add(dp);
+
                 columna++;
                 if (columna > 5)
-                {                   
+                {
                     fila++;
                     columna = 0;
                 }
@@ -67,7 +57,52 @@ namespace SkillCalculator_LunaPlus
 
         }
 
+        public DockPanel CargarSlotSkill(String but)
+        {
+            DockPanel dp = new DockPanel();
+           
+            Button b = new Button();
+            b.Content = but;
 
+            StackPanel sp = new StackPanel();
+            sp.VerticalAlignment = VerticalAlignment.Center;
+
+
+            TextBlock txt = new TextBlock();
+            txt.Text = "Nombre Skill";
+            txt.HorizontalAlignment = HorizontalAlignment.Center;
+            sp.Children.Add(txt);
+
+            Grid gr = new Grid();
+            ColumnDefinition cDef1 = new ColumnDefinition();
+            ColumnDefinition cDef2 = new ColumnDefinition();
+            cDef2.Width = new GridLength(10);
+            ColumnDefinition cDef3 = new ColumnDefinition();
+            gr.ColumnDefinitions.Add(cDef1);
+            gr.ColumnDefinitions.Add(cDef2);
+            gr.ColumnDefinitions.Add(cDef3);
+            TextBlock lvlActual = new TextBlock();
+            TextBlock barrita = new TextBlock();
+            TextBlock lvlMax = new TextBlock();
+            lvlActual.Text = "0";
+            lvlActual.HorizontalAlignment = HorizontalAlignment.Right;
+            barrita.Text = "/";
+            barrita.HorizontalAlignment = HorizontalAlignment.Center;
+            lvlMax.Text = "20";
+            lvlMax.HorizontalAlignment = HorizontalAlignment.Left;
+            Grid.SetColumn(lvlActual, 0);
+            Grid.SetColumn(barrita, 1);
+            Grid.SetColumn(lvlMax, 2);
+            gr.Children.Add(lvlActual);
+            gr.Children.Add(barrita);
+            gr.Children.Add(lvlMax);
+            sp.Children.Add(gr);
+
+            dp.Children.Add(b);
+            dp.Children.Add(sp);
+
+            return dp;
+        }
 
         public void cargarNiveles()
         {
